@@ -25,16 +25,26 @@ var ratingsSum = 0;
 var ratingsCount = ratings.length;
 
 // This for loop will go through the contents of the ratings array
-// for (var i = 0; i <= ratings[i].length; ratings + ratingsSum) {
-//     var ratingsAvg = ratingsSum / ratingsCount;
-//     var ratingsReport = "<h1>Customer Reviews</h1><h2>" + ratingsAvg + "out of 5 stars (" + ratingsCount + "reviews)</h2>";
-// }
-
-for (var i = 0; i <= ratings.length; i++) {}
-
-for (var i = 0; i <= ratingsCount; i = (ratingsSum + ratings)) {
-    ratings[i] + ratingsSum[i];
+for (var i = 0; i < ratingsCount; i++) {
+    ratingsSum += ratings[i];
 }
 
+// This variable will calculate the average out of the ratings
 var ratingsAvg = ratingsSum / ratingsCount;
-var ratingsReport = "<h1>Customer Reviews</h1><h2> average out of 5 stars (count reviews)</h2>"
+
+// This will display the rating that was given towards the game by using different variables
+var ratingReport = "<h1>Customer Reviews</h1><h2>" + ratingsAvg + " out of 5 stars (" + ratingsCount + " reviews)</h2>"
+
+// This for loop will display three of the customers reviews.
+for (var i = 0; i <= 2; i++) {
+    ratingReport += "<div class='review'> <h1>" + ratingTitles[i] + "</h1><table> <tr><th>By</th><td>" + ratingAuthors[i] + "</td></tr> <tr><th>Review Date</th><td>" + ratingDates[i] + "</td></tr> <tr><th>Rating</th><td>";
+
+    // This nested for loop will display the number of stars based on the rating
+    for (var j = 1; j <= ratings[i]; j++) {
+        ratingReport += "<img src='hg_star.png'/>";
+    }
+    ratingReport += "</td></tr></table>" + ratingSummaries[i] + "</div>";
+}
+
+// This will call in the for loop to take action
+document.getElementsByTagName("aside")[0].innerHTML = ratingReport;
